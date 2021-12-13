@@ -1,12 +1,11 @@
 package com.salesianostriana.dam.GasApi.estaciones.service;
 
-import com.salesianostriana.dam.GasApi.errors.exceptions.RequestBodyMissingException;
 import com.salesianostriana.dam.GasApi.estaciones.model.EstacionServicio;
+import com.salesianostriana.dam.GasApi.estaciones.model.dto.CreateEstacionDto;
 import com.salesianostriana.dam.GasApi.estaciones.model.dto.EstacionDtoConverter;
 import com.salesianostriana.dam.GasApi.estaciones.model.dto.GetEstacionDto;
 import com.salesianostriana.dam.GasApi.estaciones.repos.EstacionRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityExistsException;
@@ -51,15 +50,18 @@ public class EstacionService {
         }
     }
 
-    public EstacionServicio editarPorId(UUID id, GetEstacionDto estacionDto)
+    public EstacionServicio editarPorId(UUID id, CreateEstacionDto estacionDto)
             throws EntityNotFoundException{
-        Optional<EstacionServicio> estacionServicio = repository.findById(id);
+        buscarUnaPorId(id);
 
-        if(estacionServicio.isEmpty()) {
-            throw new EntityNotFoundException();
-        } else {
-            return repository.save(converter.convertGetEstacionDtoToEstacion(estacionDto));
-        }
+       return repository.save(converter.convertGetEstacionDtoToEstacion(
+               converter.convertCreateEstacionDtoToGetEstacionDto(estacionDto)
+       ));
+    }
 
+    public void eliminarPorId(UUID id) {
+        buscarUnaPorId(id);
+
+        repository.deleteById(id);
     }
 }

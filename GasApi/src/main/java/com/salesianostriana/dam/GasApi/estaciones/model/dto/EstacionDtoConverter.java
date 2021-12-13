@@ -37,4 +37,19 @@ public class EstacionDtoConverter {
                 .ubicacion(estacionDto.getUbicacion())
                 .build();
     }
+
+    public GetEstacionDto convertCreateEstacionDtoToGetEstacionDto(CreateEstacionDto estacionDto) {
+        return GetEstacionDto.builder()
+                .nombre(estacionDto.getNombre())
+                .fechaApertura(estacionDto.getFechaApertura())
+                .marca(estacionDto.getMarca())
+                .precioGasoilEspecial(estacionDto.getPrecioGasoilEspecial())
+                .precioGasoilNormal(estacionDto.getPrecioGasoilNormal())
+                .precioGasolina95Octanos(estacionDto.getPrecioGasolina95Octanos())
+                .precioGasolina98(estacionDto.getPrecioGasolina98())
+                .servicios(estacionDto.getServicios())
+                .tieneAutolavado(estacionDto.getTieneAutolavado())
+                .ubicacion(estacionDto.getUbicacion())
+                .build();
+    }
 }
