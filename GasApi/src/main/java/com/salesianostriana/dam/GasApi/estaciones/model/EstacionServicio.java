@@ -7,8 +7,6 @@ import org.hibernate.annotations.Parameter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -43,4 +41,5 @@ public class EstacionServicio implements Serializable {
     private Double precioGasolina98;
     private String servicios;
     private LocalDateTime fechaApertura;
+    private LocalDateTime fechaRegistro;
 }

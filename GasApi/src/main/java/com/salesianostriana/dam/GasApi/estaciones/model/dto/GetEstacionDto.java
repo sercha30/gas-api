@@ -50,4 +50,6 @@ public class GetEstacionDto implements Serializable {
     @Past
     private LocalDateTime fechaApertura;
 
+    private LocalDateTime fechaRegistro;
+
 }

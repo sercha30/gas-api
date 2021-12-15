@@ -7,14 +7,17 @@ import com.salesianostriana.dam.GasApi.estaciones.service.EstacionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
+@Validated
 @RequestMapping("/estaciones")
 public class EstacionController {
 
@@ -40,7 +43,7 @@ public class EstacionController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<GetEstacionDto> crearNueva(@RequestBody CreateEstacionDto nuevaEstacion) {
+    public ResponseEntity<GetEstacionDto> crearNueva(@Valid @RequestBody CreateEstacionDto nuevaEstacion) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(
                         converter.convertEstacionToGetEstacionDto(

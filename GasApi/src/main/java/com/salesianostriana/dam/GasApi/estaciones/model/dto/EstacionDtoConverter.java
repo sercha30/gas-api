@@ -19,6 +19,7 @@ public class EstacionDtoConverter {
                 .servicios(estacionServicio.getServicios())
                 .tieneAutolavado(estacionServicio.getTieneAutolavado())
                 .ubicacion(estacionServicio.getUbicacion())
+                .fechaRegistro(estacionServicio.getFechaRegistro())
                 .build();
     }
 
@@ -35,6 +36,7 @@ public class EstacionDtoConverter {
                 .servicios(estacionDto.getServicios())
                 .tieneAutolavado(estacionDto.getTieneAutolavado())
                 .ubicacion(estacionDto.getUbicacion())
+                .fechaRegistro(estacionDto.getFechaRegistro())
                 .build();
     }
 
@@ -50,6 +52,7 @@ public class EstacionDtoConverter {
                 .servicios(estacionDto.getServicios())
                 .tieneAutolavado(estacionDto.getTieneAutolavado())
                 .ubicacion(estacionDto.getUbicacion())
+                .fechaRegistro(estacionDto.getFechaRegistro())
                 .build();
     }
 }
